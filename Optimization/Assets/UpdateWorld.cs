@@ -47,10 +47,11 @@ public class UpdateWorld : MonoBehaviour
 
     void SimulateWorld(Texture2D texture)
     {
-        for (int y = 0; y < texture.height; y++)
+        int x = Random.Range(0, texture.width), y = Random.Range(0, texture.height);
+        /*for (int y = 0; y < texture.height; y++)
         {
             for (int x = 0; x < texture.width; x++)
-            {
+            {*/
                 //if a cell has more than 4 black neighbours make it blue
                 //Commercial Property
                 if (CountNeighbourColor(x, y, Color.black, texture) > 4 )
@@ -80,8 +81,8 @@ public class UpdateWorld : MonoBehaviour
                 {
                     texture.SetPixel(x, y, Color.white);
                 }
-            }
-        }
+            /*}
+        }*/
         texture.Apply();
     }
 
@@ -127,7 +128,10 @@ public class UpdateWorld : MonoBehaviour
             }
         }
 
-        SimulateWorld(texture);
+        for (int i = 0; i < 10; i++)
+        {
+            SimulateWorld(texture);
+        }
     }
 
     //Draw a pixel by pixel line between two points
